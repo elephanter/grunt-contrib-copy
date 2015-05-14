@@ -41,7 +41,10 @@ module.exports = function(grunt) {
     };
 
     this.files.forEach(function(filePair) {
-      var dest = filePair.dest;
+        var dest = filePair.dest;
+        if (options.modifyDest){
+            dest = options.modifyDest(dest);
+        }
       isExpandedPair = filePair.orig.expand || false;
 
       filePair.src.forEach(function(src) {
